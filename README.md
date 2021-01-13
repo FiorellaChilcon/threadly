@@ -1,24 +1,36 @@
-# README
+# THREADLY
+Rails app for a commenting service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![app](https://user-images.githubusercontent.com/58056552/104485968-24c24200-5599-11eb-9b8e-ea50b76a5a4c.png)
 
-Things you may want to cover:
 
-* Ruby version
+### Key concepts
+Use migrations to update columns in the database 	
+~~~~
+$ bundle exec rake db:migrate 
+~~~~
+Display data in the view
+~~~~
+$ bundle exec rake db:migrate 
+~~~~
+Utilize the form_for helper method
+~~~~html
+<ul class="comments">
+  <% @all_posts.each do |p| %>
+    <li><%= p.comment %></li>
+  <% end %>
+</ul>
+~~~~
+Use resources in the routes file 
+~~~~ ruby
+Rails.application.routes.draw do
+  root "posts#index" 
+  resources :posts
+end
+~~~~
+watch the database
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+~~~~
+$ rails c
+$ Post.all 
+~~~~
