@@ -10,16 +10,19 @@ Use migrations to update columns in the database
 $ bundle exec rake db:migrate 
 ~~~~
 Display data in the view
-~~~~
-$ bundle exec rake db:migrate 
-~~~~
-Utilize the form_for helper method
-~~~~html
+~~~~ruby
 <ul class="comments">
   <% @all_posts.each do |p| %>
     <li><%= p.comment %></li>
   <% end %>
 </ul>
+~~~~
+Utilize the form_for helper method
+~~~~ruby
+<%= form_for(@new_post) do |f|%>
+  <%= f.text_field :comment, :placeholder => 'Share your thoughts'%>
+  <%= f.submit :class => 'btn'%>
+<% end %>
 ~~~~
 Use resources in the routes file 
 ~~~~ ruby
@@ -29,7 +32,6 @@ Rails.application.routes.draw do
 end
 ~~~~
 watch the database
-
 ~~~~
 $ rails c
 $ Post.all 
